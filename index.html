@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope&display=swap" rel="stylesheet">
-    <title>Les petits plats</title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope&display=swap" rel="stylesheet">
+        <title>Les petits plats</title>
 </head>
-<body>
-    <main>
-        <section id="header">
+<body> 
+    <header id="header">
         <h1>Recherchez parmis 15000 recettes du quotien, simples et délicieuses</h1>
         <input type="text" class="input-recherche" placeholder="Rechercher une recette, un ingrédient, ...">
-        </section>
+    </header>
+    <main>
         <section class="resultat">
-            <div class="filtre">
+            <section class="filtre">
                 <div class="group-select">
                     <select name="ingredient" id="ingredient">
                         <option value="1">Ingrédients</option>
@@ -30,11 +29,12 @@
                     </select>                   
                 </div>     
                 <p>1500 recettes</p>
-            </div>
-            <div class="resultat-recette">
+            </section>
+            <section class="resultat-recette">
                 <article>
                     <figure>
                         <img src="img/Recette01.jpg" alt="">
+                        <span id="cooking-time">60 min</span>
                         <figcaption>
                             <h2>Nom de la recette</h2>
                         </figcaption>
@@ -52,6 +52,7 @@
                 <article>
                     <figure>
                         <img src="img/Recette01.jpg" alt="">
+                        <span id="cooking-time">60 min</span>
                         <figcaption>
                             <h2>Nom de la recette</h2>
                         </figcaption>
@@ -60,6 +61,7 @@
                 <article>
                     <figure>
                         <img src="img/Recette01.jpg" alt="">
+                        <span id="cooking-time">60 min</span>
                         <figcaption>
                             <h2>Nom de la recette</h2>
                         </figcaption>
@@ -68,12 +70,22 @@
                 <article>
                     <figure>
                         <img src="img/Recette01.jpg" alt="">
+                        <span id="cooking-time">60 min</span>
                         <figcaption>
                             <h2>Nom de la recette</h2>
                         </figcaption>
                     </figure>
                 </article>
-            </div>
+                <article>
+                    <figure>
+                        <img src="img/Recette01.jpg" alt="">
+                        <span id="cooking-time">60 min</span>
+                        <figcaption>
+                            <h2>Nom de la recette</h2>
+                        </figcaption>
+                    </figure>
+                </article>
+            </section>
         </section>
     </main>
     <footer>
