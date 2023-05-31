@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+  color: #1B1B1B;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2 {
+  font-family: "Anton", sans-serif;
+}
+
+main, body {
+  width: 100%;
+}
+
+#header {
+  background-image: url("img/Recette05.jpg");
+  background-repeat: no-repeat;
+  height: 300px;
+  width: 100%;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+#header h1 {
+  margin-bottom: 5px;
+  color: #FFD15B;
+  font-size: 35px;
+  width: 60%;
+  text-align: center;
+}
+#header .input-recherche {
+  width: 70%;
+  margin-top: 0;
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: none;
+  position: relative;
+}
+#header .input-recherche:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Ajustez cette valeur selon vos besoins */
+  transform: translateY(-50%);
+  width: 20px; /* Ajustez cette valeur selon vos besoins */
+  height: 20px; /* Ajustez cette valeur selon vos besoins */
+  background-image: url("loupe.svg");
+  background-size: cover;
+}
+
+.resultat {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgba(198, 198, 198, 0.1921568627);
+}
+.resultat .filtre {
+  width: 80%;
+  margin: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.resultat .filtre select {
+  min-width: 100px;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin-right: 15px;
+}
+.resultat .filtre p {
+  font-family: "Anton", sans-serif;
+  margin-right: 0;
+}
+.resultat .resultat-recette {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 30px;
+}
+.resultat .resultat-recette article {
+  width: 27%;
+  height: auto;
+}
+.resultat .resultat-recette article figure {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 15px 15px 15px 15px;
+  position: relative;
+}
+.resultat .resultat-recette article figure #cooking-time {
+  position: absolute;
+  top: 10;
+  right: 10;
+  padding: 5px 5px;
+  background-color: #FFD15B;
+  font-size: 10px;
+  border-radius: 50%;
+}
+.resultat .resultat-recette article figure img {
+  height: 180px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 15px 15px 0 0;
+}
+.resultat .resultat-recette article figure figcaption {
+  background-color: white;
+  border-radius: 0 0 15px 15px;
+  margin: 0;
+  padding: 15px 15px;
+}
+.resultat .resultat-recette article figure figcaption h2 {
+  font-size: 14px;
+  margin: 0;
+}/*# sourceMappingURL=style.css.map */
