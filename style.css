@@ -4,6 +4,11 @@
   color: #1B1B1B;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+}
+
 figure {
   -webkit-margin-start: 0;
           margin-inline-start: 0;
@@ -27,7 +32,7 @@ main, body {
 #header {
   background-image: url("img/Recette05.jpg");
   background-repeat: no-repeat;
-  height: 300px;
+  height: 450px;
   width: 100%;
   background-size: cover;
   display: flex;
@@ -133,4 +138,31 @@ main, body {
 .resultat .resultat-recette article figure figcaption h2 {
   font-size: 14px;
   margin: 0;
+  letter-spacing: 1px;
+}
+.resultat .resultat-recette article figure figcaption h3 {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  color: #7A7A7A;
+}
+.resultat .resultat-recette article figure figcaption .recette-description {
+  font-size: 11px;
+}
+.resultat .resultat-recette article figure figcaption .ingredients {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 15px;
+}
+.resultat .resultat-recette article figure figcaption .ingredients li {
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+}
+.resultat .resultat-recette article figure figcaption .ingredients .ingredient-name {
+  font-weight: 600;
+  color: #1B1B1B;
+}
+.resultat .resultat-recette article figure figcaption .ingredients .ingredient-quantity-unit {
+  color: #7A7A7A;
 }/*# sourceMappingURL=style.css.map */
