@@ -1,6 +1,4 @@
 import { recipes } from '../recettes/recipes.js';
-//const recipes = require('../json/recipes.js');
-//import { recipes } from '../json/recipes.js';
 
 async function getRecipe() {  
    var newData = recipes;
@@ -13,7 +11,6 @@ async function init() {
     //filtre
     filtreSelection(data);
     //affichage
-    
     manageData(data);
 }
 

@@ -82,6 +82,7 @@ main, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .resultat .filtre select {
   min-width: 100px;
@@ -165,4 +166,22 @@ main, body {
 }
 .resultat .resultat-recette article figure figcaption .ingredients .ingredient-quantity-unit {
   color: #7A7A7A;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 800px) {
+  .group-select {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+  }
+  .resultat .filtre select {
+    width: 45%;
+  }
+  .filtre p {
+    width: 100%;
+  }
+  .resultat .resultat-recette article {
+    width: 100%;
+  }
 }/*# sourceMappingURL=style.css.map */
