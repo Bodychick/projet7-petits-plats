@@ -178,6 +178,9 @@ main, body {
   .resultat .filtre select {
     width: 45%;
   }
+  .filtre {
+    padding-top: 20px;
+  }
   .filtre p {
     width: 100%;
   }

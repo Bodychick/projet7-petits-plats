@@ -175,8 +175,12 @@ main, body {
     .resultat .filtre select{
         width: 45%;
     }
-    .filtre p {
-        width: 100%;
+    .filtre  {
+        padding-top: 20px;
+        p{
+            width: 100%;
+        }
+        
     }
     .resultat .resultat-recette article{
         width: 100%;
