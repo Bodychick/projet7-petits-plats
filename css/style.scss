@@ -27,7 +27,7 @@ main, body {
     width: 100%;
 }
 #header {
-    background-image: url("img/Recette05.jpg");
+    background-image: url("../img/Recette05.jpg");
     background-repeat: no-repeat;
     height: 450px;
     width: 100%;
@@ -60,7 +60,7 @@ main, body {
         transform: translateY(-50%);
         width: 20px; /* Ajustez cette valeur selon vos besoins */
         height: 20px; /* Ajustez cette valeur selon vos besoins */
-        background-image: url("loupe.svg");
+        background-image: url("./loupe.svg");
         background-size: cover;
     }
 }
