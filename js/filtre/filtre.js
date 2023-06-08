@@ -1,3 +1,5 @@
+import { manageData } from '/../js/index.js';
+
 // écoute de l'input + savoir si l'utilisateur a rentré +/- 3 caractères
 export function filtreSelection(data){
     const inputRecherche = document.getElementById("input-recherche");
