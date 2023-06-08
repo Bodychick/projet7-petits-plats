@@ -24,15 +24,12 @@ export function filterRecipesByKeyword(recipes, inputKeyword) {
   
     // Convertir le mot-clé en minuscules pour une recherche insensible à la casse
     var keyword = inputKeyword.toLowerCase();
-  
-    // Parcourir les recettes
-    for (var i = 0; i < recipes.length; i++) {
-      var recipe = recipes[i];
-  
+
+    recipes.forEach(recipe => {
       // Vérifier si le nom de la recette ou la description contient le mot-clé
       if (recipe.name.toLowerCase().includes(keyword) || recipe.description.toLowerCase().includes(keyword)) {
-        filteredRecipes.push(recipe);
-        continue; // Passer à la prochaine recette si le mot-clé est trouvé dans le nom ou la description
+        return filteredRecipes.push(recipe);
+       // Passer à la prochaine recette si le mot-clé est trouvé dans le nom ou la description
       }
   
       // Vérifier si le mot-clé se trouve dans les ingrédients
@@ -44,7 +41,9 @@ export function filterRecipesByKeyword(recipes, inputKeyword) {
       if (matchingIngredients.length > 0) {
         filteredRecipes.push(recipe);
       }
-    }
+      
+    });
+
     console.log(filteredRecipes);
     manageData(filteredRecipes);
   }
