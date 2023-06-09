@@ -32,35 +32,24 @@ function filterRecipesByKeyword(recipes, inputKeyword) {
     for (var i = 0; i < recipes.length; i++) {
       var recipe = recipes[i];
       var motTrouve = 0;
-      
-      for (var x = 0; x < keywords.length; x++){
-        // Vérifier si le nom de la recette ou la description contient le mot-clé
-        if (recipe.name.toLowerCase().includes(keywords[x]) || recipe.description.toLowerCase().includes(keywords[x])) {
-          if(filteredRecipes.filter(item => item.id === recipe.id).length > 0){
-            console.log("déja présente");
-          }else {
-            motTrouve++;
-          }
-          continue; // Passer à la prochaine recette si le mot-clé est trouvé dans le nom ou la description
-        }
     
-        // Vérifier si le mot-clé se trouve dans les ingrédients
-        var matchingIngredients = recipe.ingredients.filter(function(ingredient) {
-          return ingredient.ingredient.toLowerCase().includes(keywords[x]);
-        });
-    
-        // Ajouter la recette à la liste filtrée si au moins un ingrédient correspond au mot-clé
-        if (matchingIngredients.length > 0) {
-            motTrouve++;
+      for (var y = 0; y < keywords.length; y++) {
+        if (
+          recipe.name.toLowerCase().includes(keywords[y]) ||
+          recipe.description.toLowerCase().includes(keywords[y]) ||
+          recipe.ingredients.some(function(ingredient) {
+            return ingredient.ingredient.toLowerCase().includes(keywords[y]);
+          })
+        ) {
+          motTrouve++;
+        } else {
+          break; // Sortir de la boucle dès qu'un mot-clé n'est pas présent
         }
       }
-      
-      if(motTrouve == keywords.length){
+    
+      if (motTrouve === keywords.length) {
         filteredRecipes.push(recipe);
       }
-      else {
-        
-      }  
     }
     console.log(filteredRecipes);
     manageData(filteredRecipes);
