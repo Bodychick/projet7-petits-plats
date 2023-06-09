@@ -23,30 +23,39 @@ export function filtreSelection(data){
 //
 export function filterRecipesByKeyword(recipes, inputKeyword) {
     var filteredRecipes = [];
-  
-    // Convertir le mot-clé en minuscules pour une recherche insensible à la casse
-    var keyword = inputKeyword.toLowerCase();
 
+    // Convertir le mot-clé en minuscules pour une recherche insensible à la casse
+    var keywords = splitKeyword(inputKeyword);
+    console.log(keywords);
     recipes.forEach(recipe => {
-      // Vérifier si le nom de la recette ou la description contient le mot-clé
-      if (recipe.name.toLowerCase().includes(keyword) || recipe.description.toLowerCase().includes(keyword)) {
-        return filteredRecipes.push(recipe);
-       // Passer à la prochaine recette si le mot-clé est trouvé dans le nom ou la description
-      }
-  
-      // Vérifier si le mot-clé se trouve dans les ingrédients
-      var matchingIngredients = recipe.ingredients.filter(function(ingredient) {
-        return ingredient.ingredient.toLowerCase().includes(keyword);
+      var motTrouve = 0;
+
+      keywords.forEach(element => {
+        if (
+          recipe.name.toLowerCase().includes(element) ||
+          recipe.description.toLowerCase().includes(element) ||
+          recipe.ingredients.some(function(ingredient) {
+            return ingredient.ingredient.toLowerCase().includes(element);
+          })
+        ) {
+          motTrouve++;
+        }
       });
-  
-      // Ajouter la recette à la liste filtrée si au moins un ingrédient correspond au mot-clé
-      if (matchingIngredients.length > 0) {
+      if (motTrouve === keywords.length) {
         filteredRecipes.push(recipe);
       }
-      
     });
-
     console.log(filteredRecipes);
     manageData(filteredRecipes);
+  }
+
+   //retourne un tableau avec une ligne par mot clé
+  function splitKeyword(inputKeyword){
+    var inputTableau = inputKeyword.split(" ");
+    const tableauLowerCase = inputTableau.map(element => {
+      return element.toLowerCase();
+    });
+    console.log(tableauLowerCase);
+    return tableauLowerCase;
   }
 

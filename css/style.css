@@ -64,7 +64,7 @@ main, body {
   transform: translateY(-50%);
   width: 20px; /* Ajustez cette valeur selon vos besoins */
   height: 20px; /* Ajustez cette valeur selon vos besoins */
-  background-image: url("./loupe.svg");
+  background-image: url("../loupe.svg");
   background-size: cover;
 }
 
