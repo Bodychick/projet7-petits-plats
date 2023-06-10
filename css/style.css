@@ -84,12 +84,95 @@ main, body {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.resultat .filtre select {
-  min-width: 100px;
-  border-radius: 12px;
-  padding: 10px 15px;
-  margin-right: 15px;
-  border: none;
+.resultat .filtre .wrapper {
+  width: 250px;
+  margin: auto;
+}
+.resultat .filtre .wrapper.active .content {
+  display: block;
+}
+.resultat .filtre .wrapper.active .select-btn i {
+  transform: rotate(-180deg);
+}
+.resultat .filtre .select-btn {
+  height: 65px;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  border-radius: 7px;
+  background-color: white;
+}
+.resultat .filtre .select-btn i {
+  transition: transform 0.3s linear;
+  font-size: 20px;
+}
+.resultat .filtre .content {
+  position: absolute;
+  z-index: 999;
+  top: 60px;
+  display: none;
+  background-color: white;
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 7px;
+}
+.resultat .filtre .content .options {
+  margin-top: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+.resultat .filtre .content .options li {
+  display: flex;
+  height: 40px;
+  border-radius: 5px;
+  padding: 0 13px;
+  font-size: 12px;
+  align-items: center;
+}
+.resultat .filtre .content .options li:hover {
+  background: #FFD15B;
+  cursor: pointer;
+}
+.resultat .filtre .options::-webkit-scrollbar {
+  width: 7px;
+}
+.resultat .filtre .options::-webkit-scrollbar-track {
+  border-radius: 25px;
+  background: rgba(255, 209, 91, 0.4117647059);
+}
+.resultat .filtre .options::-webkit-scrollbar-thumb {
+  border-radius: 25px;
+  background: #FFD15B;
+}
+.resultat .filtre .search {
+  height: 53px;
+  width: 100%;
+  font-size: 17px;
+}
+.resultat .filtre .search i {
+  position: absolute;
+  left: 15px;
+  line-height: 40px;
+  color: #999;
+  font-size: 14px;
+}
+.resultat .filtre .search input {
+  height: 40px;
+  width: 100%;
+  font-size: 14px;
+  padding: 0 10px 0 43px;
+  outline: none;
+  border: 1px solid #b3b3b3;
+  border-radius: 5px;
+}
+.resultat .filtre .select-btn, .resultat .filtre .option li {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+}
+.resultat .filtre .content .search {
+  position: relative;
 }
 .resultat .filtre p {
   font-family: "Anton", sans-serif;

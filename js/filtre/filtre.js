@@ -20,7 +20,7 @@ export function filtreSelection(data){
     });
 }
 
-//
+//permet de filter les éléments en fonction du mot clé
 export function filterRecipesByKeyword(recipes, inputKeyword) {
     var filteredRecipes = [];
 
