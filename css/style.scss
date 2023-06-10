@@ -70,6 +70,13 @@ main, body {
     width: 100%;
     background-color: #c6c6c631;
     padding-bottom: 80px;
+    .group-select{
+        padding-top: 20px;
+        display: flex;
+        column-gap: 20px;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
     .filtre {
         width: 80%;
         margin: auto;

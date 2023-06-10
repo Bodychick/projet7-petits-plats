@@ -75,6 +75,14 @@ main, body {
   background-color: rgba(198, 198, 198, 0.1921568627);
   padding-bottom: 80px;
 }
+.resultat .group-select {
+  padding-top: 20px;
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
 .resultat .filtre {
   width: 80%;
   margin: auto;

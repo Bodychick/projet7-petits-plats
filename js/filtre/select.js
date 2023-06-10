@@ -6,9 +6,13 @@ export function createSelect(){
     selectBtn = wrapper.querySelector(".select-btn");
 
     var listIngredients = [];
+    var listUstencils = [];
+    var listAppareils = [];
 
     recipes.forEach(recette => {
         var ingredients = recette.ingredients;
+        var appareils  = recette.appliance;
+        var ustencils = recette.ustensils;
         ingredients.forEach(ingredient => {
             var ingredientName = ingredient.ingredient;
             if(!listIngredients.some(function(element) {  
@@ -17,8 +21,20 @@ export function createSelect(){
                 listIngredients.push(ingredientName);
               }
         });
+        if(!listAppareils.some(function(element) {  
+            return element.toLowerCase()=== appareils.toLowerCase();
+          })){
+            listAppareils.push(appareils);
+        }
+        ustencils.forEach(ustencil => {
+            if(!listUstencils.some(function(element) {  
+                return element.toLowerCase()=== ustencil.toLowerCase();
+              })){
+                listUstencils.push(ustencil);
+              }
+        });
     });
-
+    
     const ingredientSearch = document.getElementById("ingredientSearch");
     ingredientSearch.addEventListener("input", function (){
         console.log(ingredientSearch.value);
