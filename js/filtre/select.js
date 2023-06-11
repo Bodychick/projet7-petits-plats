@@ -2,8 +2,7 @@ import { recipes } from '/../recettes/recipes.js';
 import { createSelectCard } from '/../js/composant/selectValue.js';
 
 export function createSelect(){
-    const wrapper = document.querySelector(".wrapper"),
-    selectBtn = wrapper.querySelector(".select-btn");
+  const wrappers = document.querySelectorAll(".wrapper");
 
     var listIngredients = [];
     var listUstencils = [];
@@ -44,26 +43,33 @@ export function createSelect(){
           prepareSelect(filteredIngredient);
     });
 
-    prepareSelect(listIngredients);
+    prepareSelect(listIngredients,"ingredients","optionsIngredients");
+    prepareSelect(listUstencils,"ustencils","optionsUstencils");
+    prepareSelect(listAppareils,"appareils","optionsAppareils");
 
-    selectBtn.addEventListener("click", ()=> {
+    wrappers.forEach((wrapper) => {
+      const selectBtn = wrapper.querySelector(".select-btn");
+      selectBtn.addEventListener("click", () => {
         wrapper.classList.toggle("active");
+        console.log("Le bouton a été cliqué !");
+      });
     });
+    
 }
 
 //cette fonction permet de supprimer les éléments select deja présent dans liste + filtre alphabétique + initer la création des li dans les select
-function prepareSelect(listIngredients){
-    const optionsIngredient = document.getElementById("optionsIngredients");
+function prepareSelect(list,name,id){
+    const optionsIngredient = document.getElementById(id);
     while (optionsIngredient.firstChild) {
       optionsIngredient.removeChild(optionsIngredient.firstChild);
     }
      //on tri par ordre alphabétique
-     listIngredients.sort(function(a, b) {
+     list.sort(function(a, b) {
         return a.localeCompare(b);
     });
 
-      listIngredients.forEach(ingredient => {
-        createSelectCard(ingredient);
+    list.forEach(element => {
+        createSelectCard(element,name,id);
       });
       ajoutListenerSurListe("ingredients");
 

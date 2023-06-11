@@ -1,11 +1,11 @@
 
-export function createSelectCard(ingredient) {
-    const optionsIngredient = document.getElementById("optionsIngredients");
+export function createSelectCard(element,name,id) {
+    const options = document.getElementById(id);
     
     const li = document.createElement("li");
-    li.textContent = ingredient;
-    li.setAttribute("name","ingredients");
-    optionsIngredient.appendChild(li);
+    li.textContent = element;
+    li.setAttribute("name",name);
+    options.appendChild(li);
 }
 
 
