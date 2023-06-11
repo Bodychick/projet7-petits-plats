@@ -40,7 +40,25 @@ export function createSelect(){
         var filteredIngredient = listIngredients.filter(function(element) {
             return element.toLowerCase().includes(ingredientSearch.value.toLowerCase());
           });
-          prepareSelect(filteredIngredient);
+          prepareSelect(filteredIngredient,"ingredients","optionsIngredients");
+    });
+
+    const ustenciltSearch = document.getElementById("ustenciltSearch");
+    ustenciltSearch.addEventListener("input", function (){
+        
+        var filteredUstencils = listUstencils.filter(function(element) {
+            return element.toLowerCase().includes(ustenciltSearch.value.toLowerCase());
+          });
+          prepareSelect(filteredUstencils,"ustencils","optionsUstencils");
+    });
+
+    const appareilSearch = document.getElementById("appareilSearch");
+    appareilSearch.addEventListener("input", function (){
+        
+        var filteredAppareils = listAppareils.filter(function(element) {
+            return element.toLowerCase().includes(appareilSearch.value.toLowerCase());
+          });
+          prepareSelect(filteredAppareils,"appareils","optionsAppareils");
     });
 
     prepareSelect(listIngredients,"ingredients","optionsIngredients");
@@ -59,7 +77,9 @@ export function createSelect(){
 
 //cette fonction permet de supprimer les éléments select deja présent dans liste + filtre alphabétique + initer la création des li dans les select
 function prepareSelect(list,name,id){
+  console.log(id);
     const optionsIngredient = document.getElementById(id);
+    console.log(optionsIngredient);
     while (optionsIngredient.firstChild) {
       optionsIngredient.removeChild(optionsIngredient.firstChild);
     }
