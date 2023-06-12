@@ -95,10 +95,10 @@ main, body {
 .resultat .group-select {
   padding-top: 20px;
   display: flex;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
+  gap: 20px;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: flex-start;
 }
 .resultat .filtre {
   width: 80%;
@@ -110,8 +110,7 @@ main, body {
   flex-wrap: wrap;
 }
 .resultat .filtre .wrapper {
-  width: 250px;
-  margin: auto;
+  min-width: 250px;
 }
 .resultat .filtre .wrapper.active .content {
   display: block;
@@ -135,7 +134,7 @@ main, body {
 .resultat .filtre .content {
   position: absolute;
   z-index: 999;
-  top: 60px;
+  top: 80px;
   display: none;
   background-color: white;
   padding: 20px;
