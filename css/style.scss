@@ -44,14 +44,32 @@ main, body {
         width:60%;
         text-align: center;
     }
-    .input-recherche{
-        width: 70%;
-        margin-top: 0;
-        padding: 15px 20px;
-        border-radius: 12px;
-        border: none;
-        position: relative;
+    div {
+        width: 60%;
+        position:relative;
+        height: 40px;
+        .input-recherche{
+            width: 100%;
+            margin-top: 0;
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: none;
+            position: relative;
+            height: 50px;
+        }
+        i {
+            top: 6px;
+            right: 20px;
+            position: absolute;
+            color:white;
+            padding: 10px 10px;
+            background-color: black;
+            border-radius: 15px;
+            outline: none;
+            cursor: pointer;
+        }
     }
+    
     .input-recherche:after{
         content: "";
         position: absolute;
@@ -185,10 +203,10 @@ main, body {
         margin: auto;
         display: flex;
         flex-wrap: wrap; 
-        justify-content: space-evenly;
-        row-gap: 30px;
+        justify-content: flex-start;
+        gap: 40px;
         article {
-            width: 27%;
+            width: 30%;
             height: auto;
             figure{
                 width: 100%;

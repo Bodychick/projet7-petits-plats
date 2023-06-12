@@ -12,7 +12,10 @@
 <body> 
     <header id="header">
         <h1>OBJ Cherchez parmis 15000 recettes du quotien, simples et délicieuses</h1>
-        <input type="text" id="input-recherche" class="input-recherche" placeholder="Rechercher une recette, un ingrédient, ...">
+        <div>
+            <input type="text" id="input-recherche" class="input-recherche" placeholder="Rechercher une recette, un ingrédient, ...">
+            <i class="fa-solid fa-magnifying-glass" id="recherchebutton"></i>
+        </div>
     </header>
     <main>
         <section class="resultat">
@@ -64,7 +67,7 @@
                         </div>     
                     </div>
                 </div>     
-                <p>1500 recettes</p>
+                <p id="nbTotalRecette">1500 recettes</p>
             </section>
             <section class="resultat-recette" id="resultat-recette">
 

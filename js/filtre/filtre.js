@@ -6,7 +6,7 @@ export function filtreSelection(data){
     inputRecherche.addEventListener("input", function(){
         console.log(inputRecherche.value.split("").length)
         console.log(inputRecherche.value.split(""));
-       if (inputRecherche.value.split("").length>3){
+       if (inputRecherche.value.split("").length>2){
             filterRecipesByKeyword(data, inputRecherche.value);
             inputRecherche.style.border = "1px solid green";
        } 
@@ -45,6 +45,7 @@ export function filterRecipesByKeyword(recipes, inputKeyword) {
         filteredRecipes.push(recipe);
       }
     });
+
     console.log(filteredRecipes);
     manageData(filteredRecipes);
   }
@@ -57,5 +58,18 @@ export function filterRecipesByKeyword(recipes, inputKeyword) {
     });
     console.log(tableauLowerCase);
     return tableauLowerCase;
+  }
+
+  export function modifnbTotalRecettes(nbRecettes){
+    const textTotalRecettes = document.getElementById("nbTotalRecette");
+    if(nbRecettes == 1){
+      textTotalRecettes.textContent = nbRecettes + " recette";
+    }
+    else if (nbRecettes == 0){
+      textTotalRecettes.textContent = nbRecettes + " recette";
+    }
+    else {
+      textTotalRecettes.textContent = nbRecettes + " recettes";
+    }
   }
 

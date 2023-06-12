@@ -48,13 +48,30 @@ main, body {
   width: 60%;
   text-align: center;
 }
-#header .input-recherche {
-  width: 70%;
+#header div {
+  width: 60%;
+  position: relative;
+  height: 40px;
+}
+#header div .input-recherche {
+  width: 100%;
   margin-top: 0;
   padding: 15px 20px;
   border-radius: 12px;
   border: none;
   position: relative;
+  height: 50px;
+}
+#header div i {
+  top: 6px;
+  right: 20px;
+  position: absolute;
+  color: white;
+  padding: 10px 10px;
+  background-color: black;
+  border-radius: 15px;
+  outline: none;
+  cursor: pointer;
 }
 #header .input-recherche:after {
   content: "";
@@ -191,11 +208,11 @@ main, body {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  row-gap: 30px;
+  justify-content: flex-start;
+  gap: 40px;
 }
 .resultat .resultat-recette article {
-  width: 27%;
+  width: 30%;
   height: auto;
 }
 .resultat .resultat-recette article figure {

@@ -1,7 +1,6 @@
-import { recipes } from '/../recettes/recipes.js';
 import { createSelectCard } from '/../js/composant/selectValue.js';
 
-export function createSelect(){
+export function createSelect(recipes){
   const wrappers = document.querySelectorAll(".wrapper");
 
     var listIngredients = [];
@@ -69,7 +68,6 @@ export function createSelect(){
       const selectBtn = wrapper.querySelector(".select-btn");
       selectBtn.addEventListener("click", () => {
         wrapper.classList.toggle("active");
-        console.log("Le bouton a été cliqué !");
       });
     });
     
@@ -101,7 +99,7 @@ function ajoutListenerSurListe(name){
 
     listElement.forEach(element => {
         element.addEventListener("click", function(){
-            console.log("je suis cliqué");
+            console.log(element);
         });
     });
 }
