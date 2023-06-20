@@ -88,6 +88,30 @@ main, body {
     width: 100%;
     background-color: #c6c6c631;
     padding-bottom: 80px;
+    .tags{
+        width: 80%;
+        margin: auto;
+        padding-top: 40px;
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        div{
+            padding: 8px 10px;
+            background-color: #FFD15B;
+            color:white;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            width: 120px;
+            overflow: hidden;
+            align-items: center;
+            flex-wrap: wrap;
+            i {
+                cursor: pointer;
+            }
+        }
+    }
     .group-select{
         padding-top: 20px;
         display: flex;
@@ -146,11 +170,22 @@ main, body {
                    padding: 0 13px;
                    font-size: 12px;
                    align-items: center;
+                   position: relative;
+                   i{
+                        position:absolute;
+                        right: 5px;
+                        line-height: 40px;
+                        font-size: 12px;
+                   }
                 }
                 li:hover {
                     background: $yellowColor;
                     cursor: pointer;
-                }               
+                } 
+                .selected {
+                    font-weight: 600;
+                    background-color: $yellowColor;
+                }              
             }
         }
         .options::-webkit-scrollbar{

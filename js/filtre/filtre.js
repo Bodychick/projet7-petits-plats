@@ -1,53 +1,114 @@
 import { manageData } from '/../js/index.js';
+//import { recipes } from '../recettes/recipes.js';
+
 
 // écoute de l'input + savoir si l'utilisateur a rentré +/- 3 caractères
 export function filtreSelection(data){
+  console.log("je repasse ici")
     const inputRecherche = document.getElementById("input-recherche");
     inputRecherche.addEventListener("input", function(){
         console.log(inputRecherche.value.split("").length)
         console.log(inputRecherche.value.split(""));
        if (inputRecherche.value.split("").length>2){
-            filterRecipesByKeyword(data, inputRecherche.value);
+            //filterRecipesByKeyword(data, inputRecherche.value);
+            filterRecipesByKeyword(data);
             inputRecherche.style.border = "1px solid green";
        } 
        else if(inputRecherche.value.split("").length==0) {
             inputRecherche.style.border = "none";
             console.log(data)
-            manageData(data);
+            filterRecipesByKeyword(data);
        } else {
             inputRecherche.style.border = "1px solid red";
        }
     });
 }
 
-//permet de filter les éléments en fonction du mot clé
-export function filterRecipesByKeyword(recipes, inputKeyword) {
-    var filteredRecipes = [];
+function getInputValue(){
+  const inputRecherche = document.getElementById("input-recherche");
+  if (inputRecherche.value.split("").length>2){
+    var keywords = splitKeyword(inputRecherche.value);
+    return keywords;
+  }
+  return [];
+}
 
-    // Convertir le mot-clé en minuscules pour une recherche insensible à la casse
-    var keywords = splitKeyword(inputKeyword);
+function getIngredientsListValue(){
+  var tableauRecupere = localStorage.getItem("ingredients");
+  if(tableauRecupere == null){
+    return [];
+  }
+  else {
+    var tableauSplit = tableauRecupere.split("||");
+    return tableauSplit;
+  }
+}
+
+function getAppareilsList(){
+  var tableauRecupere = localStorage.getItem("appareils");
+  if(tableauRecupere == null){
+    return [];
+  }
+  else {
+    var tableauSplit = tableauRecupere.split("||");
+    return tableauSplit;
+  }
+}
+
+function getUstencilsListValue(){
+  var tableauRecupere = localStorage.getItem("ustencils");
+  if(tableauRecupere == null){
+    return [];
+  }
+  else {
+    var tableauSplit = tableauRecupere.split("||");
+    return tableauSplit;
+  }
+}
+
+ export function filterRecipesByKeyword(data) {
+    const filteredRecipes = [];
+    var keywords = getInputValue();
+    var ingredients = getIngredientsListValue();
+    var appareils = getAppareilsList();
+    var ustencils = getUstencilsListValue();
     console.log(keywords);
-    recipes.forEach(recipe => {
-      var motTrouve = 0;
-
-      keywords.forEach(element => {
-        if (
-          recipe.name.toLowerCase().includes(element) ||
-          recipe.description.toLowerCase().includes(element) ||
-          recipe.ingredients.some(function(ingredient) {
-            return ingredient.ingredient.toLowerCase().includes(element);
-          })
-        ) {
-          motTrouve++;
-        }
+    console.log(ingredients);
+    console.log(appareils);
+    console.log(ustencils);
+    
+    data.forEach(recipe => {
+      // Filtrer par inputKeywords
+      const containsKeywords = keywords.every(keyword => {
+        const recipeName = recipe.name.toLowerCase();
+        const recipeIngredients = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase());
+        const recipeDescription = recipe.description.toLowerCase();
+        
+        const keywordLowerCase = keyword.toLowerCase();
+        return recipeName.includes(keywordLowerCase) ||
+          recipeIngredients.some(ingredient => ingredient.includes(keywordLowerCase)) ||
+          recipeDescription.includes(keywordLowerCase);
       });
-      if (motTrouve === keywords.length) {
+      
+      // Filtrer par listAppareils
+      const hasAppliance = appareils.length === 0 || appareils.includes(recipe.appliance);
+      console.log(appareils.length);
+      
+      // Filtrer par utensils
+      const hasUtensils = ustencils.length === 0 || ustencils.every(utensil => recipe.ustensils.includes(utensil));
+      
+      // Filtrer par ingredients
+      const hasIngredients = ingredients.length === 0 || ingredients.every(ingredient => {
+        return recipe.ingredients.some(recipeIngredient => recipeIngredient.ingredient.toLowerCase().includes(ingredient.toLowerCase()));
+      });
+      
+      // Vérifier si la recette correspond à tous les critères de filtrage
+      if (containsKeywords && hasAppliance && hasUtensils && hasIngredients) {
         filteredRecipes.push(recipe);
       }
     });
-
     console.log(filteredRecipes);
-    manageData(filteredRecipes);
+    manageData(filteredRecipes);    
   }
 
    //retourne un tableau avec une ligne par mot clé

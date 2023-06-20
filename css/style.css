@@ -92,6 +92,30 @@ main, body {
   background-color: rgba(198, 198, 198, 0.1921568627);
   padding-bottom: 80px;
 }
+.resultat .tags {
+  width: 80%;
+  margin: auto;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.resultat .tags div {
+  padding: 8px 10px;
+  background-color: #FFD15B;
+  color: white;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+  overflow: hidden;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.resultat .tags div i {
+  cursor: pointer;
+}
 .resultat .group-select {
   padding-top: 20px;
   display: flex;
@@ -153,10 +177,21 @@ main, body {
   padding: 0 13px;
   font-size: 12px;
   align-items: center;
+  position: relative;
+}
+.resultat .filtre .content .options li i {
+  position: absolute;
+  right: 5px;
+  line-height: 40px;
+  font-size: 12px;
 }
 .resultat .filtre .content .options li:hover {
   background: #FFD15B;
   cursor: pointer;
+}
+.resultat .filtre .content .options .selected {
+  font-weight: 600;
+  background-color: #FFD15B;
 }
 .resultat .filtre .options::-webkit-scrollbar {
   width: 7px;

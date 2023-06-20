@@ -9,12 +9,31 @@ async function getRecipe() {
 }
 
 async function init() {
+    localStorage.clear();
    //console.log(recipes[0]);
     var data = await getRecipe();
     //filtre
     filtreSelection(data);
     //affichage
     manageData(data);
+
+    const wrappers = document.querySelectorAll(".wrapper");
+    console.log(wrappers)
+    if(wrappers != null || wrappers != undefined){
+        wrappers.forEach((wrapper) => {
+            const selectBtn = wrapper.querySelector(".select-btn");
+            selectBtn.addEventListener("click", () => {
+              //wrapper.classList.toggle("active");
+              console.log(wrapper.classList.contains("active"))
+              if(wrapper.classList.contains("active")){
+                wrapper.classList.remove("active");
+              }
+              else {
+                wrapper.classList.add("active");
+              }
+            });
+        });
+    }
 }
 
 export function manageData(data){
