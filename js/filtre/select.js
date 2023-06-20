@@ -64,6 +64,9 @@ export function createSelect(recipes2){
     prepareSelect(listIngredients,"ingredients","optionsIngredients");
     prepareSelect(listUstencils,"ustencils","optionsUstencils");
     prepareSelect(listAppareils,"appareils","optionsAppareils");
+    ajoutListenerSurListeIngredient("ingredients");
+    ajoutListenerSurListeUstencils("ustencils");
+    ajoutListenerSurListeAppareils("appareils");
 }
 
 function removeTags(){
@@ -94,9 +97,7 @@ function prepareSelect(list,name,id){
         createSelectCard(element,name,id,isSelected);
         createTag(element,name,isSelected);
      });
-     ajoutListenerSurListeIngredient("ingredients");
-     ajoutListenerSurListeUstencils("ustencils");
-     ajoutListenerSurListeAppareils("appareils");
+
 }
 
 //Cette fonction permet d'ajout le event listener sur chaque element d'une nouvelle liste
@@ -107,10 +108,12 @@ function ajoutListenerSurListeIngredient(name){
         element.addEventListener("click", function(){
           console.log("ingredients");
           if(element.classList.contains("selected") || element.id =="tagElement"){
+            console.log("supprimer")
             supprimerLocalStorage(element.textContent,name);
           }
           else {
             ajoutLocalStorage(element.textContent,name);
+            
           }
           filterRecipesByKeyword(recipes);
         });
@@ -121,12 +124,13 @@ function ajoutListenerSurListeUstencils(name){
 
   listElement.forEach(element => {
       element.addEventListener("click", function(){
-        console.log("ustensiles");
+        console.log("ustensils");
         if(element.classList.contains("selected") || element.id =="tagElement"){
           supprimerLocalStorage(element.textContent,name);
         }
         else {
           ajoutLocalStorage(element.textContent,name);
+          
         }
         filterRecipesByKeyword(recipes);
       });
@@ -143,6 +147,7 @@ function ajoutListenerSurListeAppareils(name){
         }
         else {
           ajoutLocalStorage(element.textContent,name);
+          
         }
         filterRecipesByKeyword(recipes);
       });
