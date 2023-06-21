@@ -1,7 +1,6 @@
 import { manageData } from '/../js/index.js';
 //import { recipes } from '../recettes/recipes.js';
 
-
 // écoute de l'input + savoir si l'utilisateur a rentré +/- 3 caractères
 export function filtreSelection(data){
   console.log("je repasse ici")
@@ -23,6 +22,7 @@ export function filtreSelection(data){
        }
     });
 }
+
 
 function getInputValue(){
   const inputRecherche = document.getElementById("input-recherche");
@@ -132,5 +132,15 @@ function getUstencilsListValue(){
     else {
       textTotalRecettes.textContent = nbRecettes + " recettes";
     }
+  }
+
+  //retourne un tableau avec une ligne par mot clé
+  function splitKeyword(inputKeyword){
+    var inputTableau = inputKeyword.split(" ");
+    const tableauLowerCase = inputTableau.map(element => {
+      return element.toLowerCase();
+    });
+    console.log(tableauLowerCase);
+    return tableauLowerCase;
   }
 

@@ -3,6 +3,7 @@ import { filtreSelection, modifnbTotalRecettes } from '../js/filtre/filtre.js';
 import { createCard } from '../js/composant/card.js';
 import { createSelect } from './filtre/select.js';
 
+
 async function getRecipe() {  
    var newData = recipes;
    return newData;
