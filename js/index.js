@@ -1,5 +1,5 @@
 import { recipes } from '../recettes/recipes.js';
-import { filterRecipesByKeyword, filtreSelection } from '../js/filtre/filtre.js';
+import { filtreSelection } from '../js/filtre/filtre.js';
 import { createCard } from '../js/card/card.js';
 
 async function getRecipe() {  
@@ -16,7 +16,7 @@ async function init() {
     manageData(data);
 }
 
-function manageData(data){
+export function manageData(data){
     const resultatRecette = document.getElementById("resultat-recette");
     while (resultatRecette.firstChild) {
         resultatRecette.removeChild(resultatRecette.firstChild);
