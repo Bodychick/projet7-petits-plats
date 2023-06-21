@@ -11,24 +11,65 @@
 </head>
 <body> 
     <header id="header">
-        <h1>Cherchez parmis 15000 recettes du quotien, simples et délicieuses</h1>
-        <input type="text" id="input-recherche" class="input-recherche" placeholder="Rechercher une recette, un ingrédient, ...">
+        <h1>OBJ Cherchez parmis 15000 recettes du quotien, simples et délicieuses</h1>
+        <div>
+            <input type="text" id="input-recherche" class="input-recherche" placeholder="Rechercher une recette, un ingrédient, ...">
+            <i class="fa-solid fa-magnifying-glass" id="recherchebutton"></i>
+        </div>
     </header>
     <main>
         <section class="resultat">
+            <section class="tags" id="tags">
+            </section>
             <section class="filtre">
-                <div class="group-select">
-                    <select name="ingredient" id="ingredient">
-                        <option value="1">Ingrédients</option>
-                    </select>
-                    <select name="ingredient" id="ingredient">
-                        <option value="1">Appareils</option>
-                    </select>
-                    <select name="ingredient" id="ingredient">
-                        <option value="1">Ustensiles</option>
-                    </select>                   
+                <div class="group-select">    
+                    <div class="wrapper">
+                        <div class="select-btn">
+                            <span>Sélectionner l'ingrédient</span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                        <div class="content">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" placeholder="Coco, Poulet, ..." name="ingredientSearch" id="ingredientSearch">
+                            </div>  
+                            <ul class="options" id="optionsIngredients">
+
+                            </ul>
+                        </div>     
+                    </div>
+                    <div class="wrapper">
+                        <div class="select-btn">
+                            <span>Sélectionner un ustencil</span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                        <div class="content">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" placeholder="Bol, casseroles, couteau ..." name="ustenciltSearch" id="ustenciltSearch">
+                            </div>  
+                            <ul class="options" id="optionsUstencils">
+
+                            </ul>
+                        </div>     
+                    </div>
+                    <div class="wrapper">
+                        <div class="select-btn">
+                            <span>Sélectionner l'appareil</span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                        <div class="content">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" placeholder="Four, Micro Onde, ..." name="appareilSearch" id="appareilSearch">
+                            </div>  
+                            <ul class="options" id="optionsAppareils">
+
+                            </ul>
+                        </div>     
+                    </div>
                 </div>     
-                <p>1500 recettes</p>
+                <p id="nbTotalRecette">1500 recettes</p>
             </section>
             <section class="resultat-recette" id="resultat-recette">
 

@@ -48,13 +48,30 @@ main, body {
   width: 60%;
   text-align: center;
 }
-#header .input-recherche {
-  width: 70%;
+#header div {
+  width: 60%;
+  position: relative;
+  height: 40px;
+}
+#header div .input-recherche {
+  width: 100%;
   margin-top: 0;
   padding: 15px 20px;
   border-radius: 12px;
   border: none;
   position: relative;
+  height: 50px;
+}
+#header div i {
+  top: 6px;
+  right: 20px;
+  position: absolute;
+  color: white;
+  padding: 10px 10px;
+  background-color: black;
+  border-radius: 15px;
+  outline: none;
+  cursor: pointer;
 }
 #header .input-recherche:after {
   content: "";
@@ -64,7 +81,7 @@ main, body {
   transform: translateY(-50%);
   width: 20px; /* Ajustez cette valeur selon vos besoins */
   height: 20px; /* Ajustez cette valeur selon vos besoins */
-  background-image: url("./loupe.svg");
+  background-image: url("../loupe.svg");
   background-size: cover;
 }
 
@@ -75,6 +92,38 @@ main, body {
   background-color: rgba(198, 198, 198, 0.1921568627);
   padding-bottom: 80px;
 }
+.resultat .tags {
+  width: 80%;
+  margin: auto;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.resultat .tags div {
+  padding: 8px 10px;
+  background-color: #FFD15B;
+  color: white;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+  overflow: hidden;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.resultat .tags div i {
+  cursor: pointer;
+}
+.resultat .group-select {
+  padding-top: 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+}
 .resultat .filtre {
   width: 80%;
   margin: auto;
@@ -84,12 +133,105 @@ main, body {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.resultat .filtre select {
-  min-width: 100px;
-  border-radius: 12px;
-  padding: 10px 15px;
-  margin-right: 15px;
-  border: none;
+.resultat .filtre .wrapper {
+  min-width: 250px;
+}
+.resultat .filtre .wrapper.active .content {
+  display: block;
+}
+.resultat .filtre .wrapper.active .select-btn i {
+  transform: rotate(-180deg);
+}
+.resultat .filtre .select-btn {
+  height: 65px;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  border-radius: 7px;
+  background-color: white;
+}
+.resultat .filtre .select-btn i {
+  transition: transform 0.3s linear;
+  font-size: 20px;
+}
+.resultat .filtre .content {
+  position: absolute;
+  z-index: 999;
+  top: 80px;
+  display: none;
+  background-color: white;
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 7px;
+}
+.resultat .filtre .content .options {
+  margin-top: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+.resultat .filtre .content .options li {
+  display: flex;
+  height: 40px;
+  border-radius: 5px;
+  padding: 0 13px;
+  font-size: 12px;
+  align-items: center;
+  position: relative;
+}
+.resultat .filtre .content .options li i {
+  position: absolute;
+  right: 5px;
+  line-height: 40px;
+  font-size: 12px;
+}
+.resultat .filtre .content .options li:hover {
+  background: #FFD15B;
+  cursor: pointer;
+}
+.resultat .filtre .content .options .selected {
+  font-weight: 600;
+  background-color: #FFD15B;
+}
+.resultat .filtre .options::-webkit-scrollbar {
+  width: 7px;
+}
+.resultat .filtre .options::-webkit-scrollbar-track {
+  border-radius: 25px;
+  background: rgba(255, 209, 91, 0.4117647059);
+}
+.resultat .filtre .options::-webkit-scrollbar-thumb {
+  border-radius: 25px;
+  background: #FFD15B;
+}
+.resultat .filtre .search {
+  height: 53px;
+  width: 100%;
+  font-size: 17px;
+}
+.resultat .filtre .search i {
+  position: absolute;
+  left: 15px;
+  line-height: 40px;
+  color: #999;
+  font-size: 14px;
+}
+.resultat .filtre .search input {
+  height: 40px;
+  width: 100%;
+  font-size: 14px;
+  padding: 0 10px 0 43px;
+  outline: none;
+  border: 1px solid #b3b3b3;
+  border-radius: 5px;
+}
+.resultat .filtre .select-btn, .resultat .filtre .option li {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+}
+.resultat .filtre .content .search {
+  position: relative;
 }
 .resultat .filtre p {
   font-family: "Anton", sans-serif;
@@ -100,11 +242,11 @@ main, body {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  row-gap: 30px;
+  justify-content: flex-start;
+  gap: 40px;
 }
 .resultat .resultat-recette article {
-  width: 27%;
+  width: 30%;
   height: auto;
 }
 .resultat .resultat-recette article figure {
