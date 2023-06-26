@@ -1,5 +1,5 @@
 import { manageData } from '/../js/index.js';
-//import { recipes } from '../recettes/recipes.js';
+//import { recipes } from '/recettes/recipes.js';
 
 // écoute de l'input + savoir si l'utilisateur a rentré +/- 3 caractères
 export function filtreSelection(data){
@@ -80,15 +80,15 @@ function getUstencilsListValue(){
     data.forEach(recipe => {
       // Filtrer par inputKeywords
       const containsKeywords = keywords.every(keyword => {
-        const recipeName = recipe.name.toLowerCase();
-        const recipeIngredients = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase());
-        const recipeDescription = recipe.description.toLowerCase();
-        
-        const keywordLowerCase = keyword.toLowerCase();
-        return recipeName.includes(keywordLowerCase) ||
-          recipeIngredients.some(ingredient => ingredient.includes(keywordLowerCase)) ||
-          recipeDescription.includes(keywordLowerCase);
-      });
+      const recipeName = recipe.name.toLowerCase();
+      const recipeIngredients = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase());
+      const recipeDescription = recipe.description.toLowerCase();
+      
+      const keywordLowerCase = keyword.toLowerCase();
+      return recipeName.includes(keywordLowerCase) ||
+        recipeIngredients.some(ingredient => ingredient.includes(keywordLowerCase)) ||
+        recipeDescription.includes(keywordLowerCase);
+    });
       
       // Filtrer par listAppareils
       const hasAppliance = appareils.length === 0 || appareils.includes(recipe.appliance);
