@@ -9,7 +9,6 @@ export function createSelect(recipes2){
     var listAppareils = [];
 
     console.log(document.getElementById("optionsIngredients"));
-    
     recipes2.forEach(recette => {
         let ingredients = recette.ingredients;
         var appareils  = recette.appliance;
@@ -35,7 +34,7 @@ export function createSelect(recipes2){
               }
         });
     });
-
+    
     const ingredientSearch = document.getElementById("ingredientSearch");
     ingredientSearch.addEventListener("input", function (){
         console.log(ingredientSearch.value);
@@ -47,6 +46,7 @@ export function createSelect(recipes2){
           ajoutListenerSurListeIngredient("ingredients");
     });
 
+    
     const ustenciltSearch = document.getElementById("ustenciltSearch");
     ustenciltSearch.addEventListener("input", function (){
         
@@ -66,11 +66,10 @@ export function createSelect(recipes2){
           prepareSelect(filteredAppareils,"appareils","optionsAppareils");
           ajoutListenerSurListeAppareils("appareils");
     });
-    removeTags();
-    console.log(document.getElementById("optionsIngredients"));
 
-    console.log("avant le prepareSelect")
-    prepareSelect(listIngredients,"ingredients","optionsIngredients");
+
+    removeTags();
+    prepareSelect(listIngredients,"ingredients","optionsIngredients")
     createTags(listIngredients,"ingredients","optionsIngredients");
 
     prepareSelect(listUstencils,"ustencils","optionsUstencils");
@@ -95,19 +94,10 @@ function removeTags(){
   }
 }
 
-function removeSelectItems(id){
-  const optionsIngredient = document.getElementById(id);
-  while (optionsIngredient.firstChild) {
-    console.log(optionsIngredient);
-    optionsIngredient.removeChild(optionsIngredient.firstChild);
-    console.log(optionsIngredient);
-  }
-}
-
 function createTags(list,name,id){
   list.forEach(element => {
     var isSelected = checkValeur(name,element);
-    createSelectCard(element,name,id,isSelected);
+    //createSelectCard(element,name,id,isSelected);
     createTag(element,name,isSelected);
  });
 }
@@ -116,10 +106,13 @@ function createTags(list,name,id){
 function prepareSelect(list,name,id){
 
     const optionsIngredient = document.getElementById(id);
-    
+  
     while (optionsIngredient.firstChild) {
       optionsIngredient.removeChild(optionsIngredient.firstChild);
     }
+
+    console.log(document.getElementById("optionsIngredients"));
+
     console.log("je suis là")
     
     //Créer une fonction pour supprimer enfant
@@ -127,8 +120,10 @@ function prepareSelect(list,name,id){
      list.sort(function(a, b) {
         return a.localeCompare(b);
     });
-
+    
     console.log(list);
+    console.log(document.getElementById("optionsIngredients"));
+
     list.forEach(element => {
       var isSelected = checkValeur(name,element);
       createSelectCard(element,name,id,isSelected);

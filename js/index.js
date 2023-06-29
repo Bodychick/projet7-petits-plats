@@ -3,6 +3,7 @@ import { filtreSelection, modifnbTotalRecettes } from '../js/filtre/filtre.js';
 import { createCard } from '../js/composant/card.js';
 import { createSelect } from './filtre/select.js';
 
+console.log(document.getElementById("optionsIngredients"));
 
 async function getRecipe() {  
    var newData = recipes;
@@ -18,7 +19,7 @@ async function init() {
 
     //input listener
     filtreSelection(data);
-    console.log(document.getElementById("optionsIngredients"));
+    console.log(document.getElementById("optionsIngredients"))
 
     //affichage
     manageData(data);
@@ -44,8 +45,9 @@ async function init() {
 
 export function manageData(data){
     console.log(document.getElementById("optionsIngredients"));
-
+    
     createSelect(data);
+    
     console.log(document.getElementById("optionsIngredients"));
 
     const resultatRecette = document.getElementById("resultat-recette");
