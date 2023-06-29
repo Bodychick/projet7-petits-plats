@@ -94,7 +94,7 @@ function removeTags(){
   }
 }
 
-function createTags(list,name,id){
+export function createTags(list,name,id){
   list.forEach(element => {
     var isSelected = checkValeur(name,element);
     //createSelectCard(element,name,id,isSelected);
@@ -131,7 +131,7 @@ function prepareSelect(list,name,id){
 }
 
 //Cette fonction permet d'ajout le event listener sur chaque element d'une nouvelle liste
-function ajoutListenerSurListeIngredient(name){
+export function ajoutListenerSurListeIngredient(name){
     const listElement = document.getElementsByName(name);
     listElement.forEach(element => {
         element.addEventListener("click", function(){
@@ -148,7 +148,7 @@ function ajoutListenerSurListeIngredient(name){
         });
     });
 }
-function ajoutListenerSurListeUstencils(name){
+export function ajoutListenerSurListeUstencils(name){
   const listElement = document.getElementsByName(name);
 
   listElement.forEach(element => {
@@ -165,7 +165,7 @@ function ajoutListenerSurListeUstencils(name){
       });
   });
 }
-function ajoutListenerSurListeAppareils(name){
+export function ajoutListenerSurListeAppareils(name){
   const listElement = document.getElementsByName(name);
 
   listElement.forEach(element => {

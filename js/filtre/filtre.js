@@ -33,7 +33,7 @@ function getInputValue(){
   return [];
 }
 
-function getIngredientsListValue(){
+export function getIngredientsListValue(){
   var tableauRecupere = localStorage.getItem("ingredients");
   if(tableauRecupere == null){
     return [];
@@ -44,7 +44,7 @@ function getIngredientsListValue(){
   }
 }
 
-function getAppareilsList(){
+export function getAppareilsList(){
   var tableauRecupere = localStorage.getItem("appareils");
   if(tableauRecupere == null){
     return [];
@@ -55,7 +55,7 @@ function getAppareilsList(){
   }
 }
 
-function getUstencilsListValue(){
+export function getUstencilsListValue(){
   var tableauRecupere = localStorage.getItem("ustencils");
   if(tableauRecupere == null){
     return [];

@@ -63,3 +63,11 @@ export function createCard(element){
     return article;
 }
 
+export function create404(){
+    const div = document.createElement("div");
+    const titre = document.createElement("h2");
+    titre.textContent = "Aucune recette ne correspond à votre recherche, veuillez la modifier :( ";
+    div.appendChild(titre);
+    return div;
+}
+

@@ -1,7 +1,7 @@
 import { recipes } from '../recettes/recipes.js';
-import { filtreSelection, modifnbTotalRecettes } from '../js/filtre/filtre.js';
-import { createCard } from '../js/composant/card.js';
-import { createSelect } from './filtre/select.js';
+import { filtreSelection, modifnbTotalRecettes,getAppareilsList,getUstencilsListValue, getIngredientsListValue } from '../js/filtre/filtre.js';
+import { create404,createCard } from '../js/composant/card.js';
+import { createSelect, createTags, ajoutListenerSurListeIngredient, ajoutListenerSurListeAppareils, ajoutListenerSurListeUstencils } from './filtre/select.js';
 
 console.log(document.getElementById("optionsIngredients"));
 
@@ -56,11 +56,36 @@ export function manageData(data){
     }
     console.log(data);
     modifnbTotalRecettes(data.length);
-    data.forEach(element => {
+    if (data.length>0){
+      data.forEach(element => {
         resultatRecette.appendChild(createCard(element));
-    });
-    console.log(document.getElementById("optionsIngredients"));
-
+      });
+    }
+    else {
+      resultatRecette.appendChild(create404());
+      let listIngredients = [];
+      var listUstencils = [];
+      var listAppareils = [];
+      listIngredients = getIngredientsListValue();
+      listUstencils = getUstencilsListValue();
+      listAppareils = getAppareilsList();
+      if(listIngredients.lenght!=0){
+        createTags(listIngredients,"ingredients","optionsIngredients");
+      }
+      if(listUstencils.lenght!=0){
+        createTags(listUstencils,"ingredients","optionsIngredients");
+      }
+      if(listAppareils.lenght!=0){
+        createTags(listAppareils,"ingredients","optionsIngredients");
+      }
+      createTags(listUstencils,"ustencils","optionsUstencils");
+      createTags(listAppareils,"appareils","optionsAppareils");
+      ajoutListenerSurListeIngredient("ingredients");
+      ajoutListenerSurListeUstencils("ustencils");
+      ajoutListenerSurListeAppareils("appareils");
+    }
+    
 }
+
 
 init();
