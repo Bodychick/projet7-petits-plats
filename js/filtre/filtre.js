@@ -4,12 +4,12 @@ import { manageData } from '/../js/index.js';
 // écoute de l'input + savoir si l'utilisateur a rentré +/- 3 caractères
 export function filtreSelection(data){
   console.log("je repasse ici")
+  console.log(document.getElementById("optionsIngredients"));
     const inputRecherche = document.getElementById("input-recherche");
     inputRecherche.addEventListener("input", function(){
         console.log(inputRecherche.value.split("").length)
         console.log(inputRecherche.value.split(""));
        if (inputRecherche.value.split("").length>2){
-            //filterRecipesByKeyword(data, inputRecherche.value);
             filterRecipesByKeyword(data);
             inputRecherche.style.border = "1px solid green";
        } 

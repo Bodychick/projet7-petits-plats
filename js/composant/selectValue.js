@@ -1,7 +1,6 @@
 
 export function createSelectCard(element,name,id,isSelected) {
     const options = document.getElementById(id);
-    
     const li = document.createElement("li");
     if(isSelected){
         const cliqueCroix = document.createElement("i");

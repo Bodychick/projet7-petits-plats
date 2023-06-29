@@ -13,8 +13,13 @@ async function init() {
     localStorage.clear();
    //console.log(recipes[0]);
     var data = await getRecipe();
-    //filtre
+    console.log(document.getElementById("optionsIngredients"));
+
+
+    //input listener
     filtreSelection(data);
+    console.log(document.getElementById("optionsIngredients"));
+
     //affichage
     manageData(data);
 
@@ -38,7 +43,11 @@ async function init() {
 }
 
 export function manageData(data){
+    console.log(document.getElementById("optionsIngredients"));
+
     createSelect(data);
+    console.log(document.getElementById("optionsIngredients"));
+
     const resultatRecette = document.getElementById("resultat-recette");
     while (resultatRecette.firstChild) {
         resultatRecette.removeChild(resultatRecette.firstChild);
@@ -48,6 +57,8 @@ export function manageData(data){
     data.forEach(element => {
         resultatRecette.appendChild(createCard(element));
     });
+    console.log(document.getElementById("optionsIngredients"));
+
 }
 
 init();

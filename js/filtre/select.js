@@ -8,6 +8,8 @@ export function createSelect(recipes2){
     var listUstencils = [];
     var listAppareils = [];
 
+    console.log(document.getElementById("optionsIngredients"));
+    
     recipes2.forEach(recette => {
         let ingredients = recette.ingredients;
         var appareils  = recette.appliance;
@@ -33,14 +35,14 @@ export function createSelect(recipes2){
               }
         });
     });
-    
+
     const ingredientSearch = document.getElementById("ingredientSearch");
     ingredientSearch.addEventListener("input", function (){
         console.log(ingredientSearch.value);
         var filteredIngredient = listIngredients.filter(function(element) {
             return element.toLowerCase().includes(ingredientSearch.value.toLowerCase());
           });
-          console.log(filteredIngredient);
+          console.log("je repasse ici");
           prepareSelect(filteredIngredient,"ingredients","optionsIngredients");
           ajoutListenerSurListeIngredient("ingredients");
     });
@@ -65,6 +67,9 @@ export function createSelect(recipes2){
           ajoutListenerSurListeAppareils("appareils");
     });
     removeTags();
+    console.log(document.getElementById("optionsIngredients"));
+
+    console.log("avant le prepareSelect")
     prepareSelect(listIngredients,"ingredients","optionsIngredients");
     createTags(listIngredients,"ingredients","optionsIngredients");
 
@@ -74,15 +79,28 @@ export function createSelect(recipes2){
     prepareSelect(listAppareils,"appareils","optionsAppareils");
     createTags(listAppareils,"appareils","optionsAppareils");
 
+    console.log(document.getElementById("optionsIngredients"));
+
     ajoutListenerSurListeIngredient("ingredients");
     ajoutListenerSurListeUstencils("ustencils");
     ajoutListenerSurListeAppareils("appareils");
+
+    console.log(document.getElementById("optionsIngredients"));
 }
 
 function removeTags(){
   const tags = document.getElementById("tags");
   while (tags.firstChild) {
     tags.removeChild(tags.firstChild);
+  }
+}
+
+function removeSelectItems(id){
+  const optionsIngredient = document.getElementById(id);
+  while (optionsIngredient.firstChild) {
+    console.log(optionsIngredient);
+    optionsIngredient.removeChild(optionsIngredient.firstChild);
+    console.log(optionsIngredient);
   }
 }
 
@@ -94,16 +112,15 @@ function createTags(list,name,id){
  });
 }
 
-//cette fonction permet de supprimer les éléments select deja présent dans liste + filtre alphabétique + initer la création des li dans les select
+//cette fonction permet de supprimer les éléments du select deja présent dans liste + filtre alphabétique + initer la création des li dans les select
 function prepareSelect(list,name,id){
-  console.log(id);
+
     const optionsIngredient = document.getElementById(id);
-  
-    console.log(optionsIngredient);
     
     while (optionsIngredient.firstChild) {
       optionsIngredient.removeChild(optionsIngredient.firstChild);
     }
+    console.log("je suis là")
     
     //Créer une fonction pour supprimer enfant
     //on tri par ordre alphabétique
@@ -111,6 +128,7 @@ function prepareSelect(list,name,id){
         return a.localeCompare(b);
     });
 
+    console.log(list);
     list.forEach(element => {
       var isSelected = checkValeur(name,element);
       createSelectCard(element,name,id,isSelected);
@@ -120,18 +138,17 @@ function prepareSelect(list,name,id){
 //Cette fonction permet d'ajout le event listener sur chaque element d'une nouvelle liste
 function ajoutListenerSurListeIngredient(name){
     const listElement = document.getElementsByName(name);
-
     listElement.forEach(element => {
         element.addEventListener("click", function(){
-          console.log("ingredients");
+          console.log(document.getElementById("optionsIngredients"));
           if(element.classList.contains("selected") || element.id =="tagElement"){
             console.log("supprimer")
             supprimerLocalStorage(element.textContent,name);
           }
           else {
             ajoutLocalStorage(element.textContent,name);
-            
           }
+          console.log(document.getElementById("optionsIngredients"));
           filterRecipesByKeyword(recipes);
         });
     });
