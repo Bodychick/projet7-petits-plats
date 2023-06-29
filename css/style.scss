@@ -36,7 +36,13 @@ main, body {
     flex-direction: column;
     margin:auto;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
+    position: relative;
+    .logo {
+        position: absolute;
+        top: 40px;
+        left: 70px;
+    }    
     h1{
         margin-bottom: 5px;
         color:$yellowColor;

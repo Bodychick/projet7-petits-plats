@@ -40,6 +40,12 @@ main, body {
   margin: auto;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+#header .logo {
+  position: absolute;
+  top: 40px;
+  left: 70px;
 }
 #header h1 {
   margin-bottom: 5px;
