@@ -40,6 +40,7 @@ export function createSelect(recipes2){
         var filteredIngredient = listIngredients.filter(function(element) {
             return element.toLowerCase().includes(ingredientSearch.value.toLowerCase());
           });
+          console.log(filteredIngredient);
           prepareSelect(filteredIngredient,"ingredients","optionsIngredients");
           ajoutListenerSurListeIngredient("ingredients");
     });
@@ -97,8 +98,9 @@ function createTags(list,name,id){
 function prepareSelect(list,name,id){
   console.log(id);
     const optionsIngredient = document.getElementById(id);
-    
+  
     console.log(optionsIngredient);
+    
     while (optionsIngredient.firstChild) {
       optionsIngredient.removeChild(optionsIngredient.firstChild);
     }
@@ -108,6 +110,11 @@ function prepareSelect(list,name,id){
      list.sort(function(a, b) {
         return a.localeCompare(b);
     });
+
+    list.forEach(element => {
+      var isSelected = checkValeur(name,element);
+      createSelectCard(element,name,id,isSelected);
+   });
 }
 
 //Cette fonction permet d'ajout le event listener sur chaque element d'une nouvelle liste
