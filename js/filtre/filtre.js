@@ -76,23 +76,38 @@ export function getUstencilsListValue(){
     console.log(ingredients);
     console.log(appareils);
     console.log(ustencils);
+
     
-    data.forEach(recipe => {
-      // Filtrer par inputKeywords
-      const containsKeywords = keywords.every(keyword => {
-      const recipeName = recipe.name.toLowerCase();
-      const recipeIngredients = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase());
-      const recipeDescription = recipe.description.toLowerCase();
+    for (let i = 0; i < data.length; i++) {
+      const recipe = data[i];
       
-      const keywordLowerCase = keyword.toLowerCase();
-      return recipeName.includes(keywordLowerCase) ||
-        recipeIngredients.some(ingredient => ingredient.includes(keywordLowerCase)) ||
-        recipeDescription.includes(keywordLowerCase);
-    });
+      // Filtrer par inputKeywords
+      let containsKeywords = true;
+      for (let j = 0; j < keywords.length; j++) {
+        const keyword = keywords[j];
+        console.log(keyword);
+        const keywordLowerCase = keyword.toLowerCase();
+        
+        const recipeName = recipe.name.toLowerCase();
+        const recipeIngredients = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase());
+        const recipeDescription = recipe.description.toLowerCase();
+        
+        let containsKeyword = false;
+        for (let i = 0; i < recipeIngredients.length; i++) {
+          if (recipeIngredients[i].includes(keywordLowerCase)) {
+            containsKeyword = true;
+            break;
+          }
+        }
+        
+        if (!recipeName.includes(keywordLowerCase) && !containsKeyword && !recipeDescription.includes(keywordLowerCase)) {
+          containsKeywords = false;
+          break;
+        }
+      }
       
       // Filtrer par listAppareils
       const hasAppliance = appareils.length === 0 || appareils.includes(recipe.appliance);
-      console.log(appareils.length);
       
       // Filtrer par utensils
       const hasUtensils = ustencils.length === 0 || ustencils.every(utensil => recipe.ustensils.includes(utensil));
@@ -106,7 +121,8 @@ export function getUstencilsListValue(){
       if (containsKeywords && hasAppliance && hasUtensils && hasIngredients) {
         filteredRecipes.push(recipe);
       }
-    });
+    }
+    
     console.log(filteredRecipes);
     manageData(filteredRecipes);    
   }

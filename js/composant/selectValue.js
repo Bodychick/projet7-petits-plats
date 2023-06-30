@@ -4,17 +4,20 @@ export function createSelectCard(element,name,id,isSelected) {
     const li = document.createElement("li");
     if(isSelected){
         const cliqueCroix = document.createElement("i");
-        const content = document.createElement("span");
+        //const content = document.createElement("span");
         cliqueCroix.classList.add("fa-solid","fa-xmark");
-        console.log(cliqueCroix);
-        content.textContent = element;
+        //console.log(cliqueCroix);
+        li.innerHTML = `${element}<i class="fa-solid fa-xmark"></i>`;
         li.appendChild(cliqueCroix);
-        li.appendChild(content);
+       // li.appendChild(content);
         console.log(li)
         li.classList.add("selected");
         console.log(li);
+    }
+    else {
+        li.textContent = element;
     }    
-    li.textContent = element;
+    
     li.setAttribute("name",name);
     options.appendChild(li);
 }
