@@ -23,7 +23,7 @@ export function filtreSelection(data){
     });
 }
 
-
+//Récupérer la valeur du champ de recherche
 function getInputValue(){
   const inputRecherche = document.getElementById("input-recherche");
   if (inputRecherche.value.split("").length>2){
@@ -33,6 +33,7 @@ function getInputValue(){
   return [];
 }
 
+//Récupérer les ingrédients présent en localstorage
 export function getIngredientsListValue(){
   var tableauRecupere = localStorage.getItem("ingredients");
   if(tableauRecupere == null){
@@ -44,6 +45,7 @@ export function getIngredientsListValue(){
   }
 }
 
+//récupérer les appareils présents dans lelocalstorage
 export function getAppareilsList(){
   var tableauRecupere = localStorage.getItem("appareils");
   if(tableauRecupere == null){
@@ -55,6 +57,7 @@ export function getAppareilsList(){
   }
 }
 
+// récupérer les ustenciles dans le localstorage
 export function getUstencilsListValue(){
   var tableauRecupere = localStorage.getItem("ustencils");
   if(tableauRecupere == null){
@@ -66,6 +69,7 @@ export function getUstencilsListValue(){
   }
 }
 
+//Fonction de filtre global
  export function filterRecipesByKeyword(data) {
     const filteredRecipes = [];
     var keywords = getInputValue();
@@ -78,12 +82,15 @@ export function getUstencilsListValue(){
     console.log(ustencils);
 
     
+    //Parcourir les recettes
     for (let i = 0; i < data.length; i++) {
       const recipe = data[i];
       
       // Filtrer par inputKeywords
       let containsKeywords = true;
+      //Parcourir le tableau de mot clés (input)
       for (let j = 0; j < keywords.length; j++) {
+        //tout en minuscule
         const keyword = keywords[j];
         console.log(keyword);
         const keywordLowerCase = keyword.toLowerCase();
@@ -93,6 +100,7 @@ export function getUstencilsListValue(){
         const recipeDescription = recipe.description.toLowerCase();
         
         let containsKeyword = false;
+        //On regarde si un mot clé est présent dans la recette
         for (let i = 0; i < recipeIngredients.length; i++) {
           if (recipeIngredients[i].includes(keywordLowerCase)) {
             containsKeyword = true;
@@ -100,10 +108,12 @@ export function getUstencilsListValue(){
           }
         }
         
+        // On sort de la boucle for si rien ne correspond
         if (!recipeName.includes(keywordLowerCase) && !containsKeyword && !recipeDescription.includes(keywordLowerCase)) {
           containsKeywords = false;
           break;
         }
+
       }
       
       // Filtrer par listAppareils
