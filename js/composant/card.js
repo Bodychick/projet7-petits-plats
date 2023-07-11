@@ -30,7 +30,9 @@ export function createCard(element){
         // Créer le span pour la quantité et l'unité (si disponible)
         var quantityUnit = document.createElement('span');
         quantityUnit.className = 'ingredient-quantity-unit';
-        quantityUnit.textContent = element2.quantity + ' ';
+        if (element2.quantity){
+            quantityUnit.textContent = element2.quantity + ' ';
+        }
 
         if (element2.unit) {
         quantityUnit.textContent += element2.unit;
@@ -61,3 +63,10 @@ export function createCard(element){
     return article;
 }
 
+export function create404(){
+    const div = document.createElement("div");
+    const titre = document.createElement("h2");
+    titre.textContent = "Aucune recette ne correspond à votre recherche, veuillez la modifier :( ";
+    div.appendChild(titre);
+    return div;
+}

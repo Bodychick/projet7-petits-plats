@@ -1,13 +1,15 @@
-import { createSelectCard,createTag } from '/../js/composant/selectValue.js';
-import { checkValeur,ajoutLocalStorage,supprimerLocalStorage } from '/../js/filtre/localStorage.js';
-import { recipes } from '/../recettes/recipes.js';
-import { filterRecipesByKeyword } from '/../js/filtre/filtre.js';
+import { createSelectCard,createTag } from '/js/composant/selectValue.js';
+import { checkValeur,ajoutLocalStorage,supprimerLocalStorage } from '/js/filtre/localStorage.js';
+import { recipes } from '/recettes/recipes.js';
+import { filterRecipesByKeyword } from '/js/filtre/filtre.js';
+
 
 export function createSelect(recipes2){
     let listIngredients = [];
     var listUstencils = [];
     var listAppareils = [];
 
+    console.log(document.getElementById("optionsIngredients"));
     recipes2.forEach(recette => {
         let ingredients = recette.ingredients;
         var appareils  = recette.appliance;
@@ -40,9 +42,12 @@ export function createSelect(recipes2){
         var filteredIngredient = listIngredients.filter(function(element) {
             return element.toLowerCase().includes(ingredientSearch.value.toLowerCase());
           });
+          console.log("je repasse ici");
           prepareSelect(filteredIngredient,"ingredients","optionsIngredients");
+          ajoutListenerSurListeIngredient("ingredients");
     });
 
+    
     const ustenciltSearch = document.getElementById("ustenciltSearch");
     ustenciltSearch.addEventListener("input", function (){
         
@@ -50,23 +55,37 @@ export function createSelect(recipes2){
             return element.toLowerCase().includes(ustenciltSearch.value.toLowerCase());
           });
           prepareSelect(filteredUstencils,"ustencils","optionsUstencils");
+          ajoutListenerSurListeUstencils("ustencils");
     });
 
     const appareilSearch = document.getElementById("appareilSearch");
     appareilSearch.addEventListener("input", function (){
-        
+        console.log(appareilSearch.value);
         var filteredAppareils = listAppareils.filter(function(element) {
             return element.toLowerCase().includes(appareilSearch.value.toLowerCase());
           });
           prepareSelect(filteredAppareils,"appareils","optionsAppareils");
+          ajoutListenerSurListeAppareils("appareils");
     });
+
+
     removeTags();
-    prepareSelect(listIngredients,"ingredients","optionsIngredients");
+    prepareSelect(listIngredients,"ingredients","optionsIngredients")
+    createTags(listIngredients,"ingredients","optionsIngredients");
+
     prepareSelect(listUstencils,"ustencils","optionsUstencils");
+    createTags(listUstencils,"ustencils","optionsUstencils");
+
     prepareSelect(listAppareils,"appareils","optionsAppareils");
+    createTags(listAppareils,"appareils","optionsAppareils");
+
+    console.log(document.getElementById("optionsIngredients"));
+
     ajoutListenerSurListeIngredient("ingredients");
     ajoutListenerSurListeUstencils("ustencils");
     ajoutListenerSurListeAppareils("appareils");
+
+    console.log(document.getElementById("optionsIngredients"));
 }
 
 function removeTags(){
@@ -76,50 +95,61 @@ function removeTags(){
   }
 }
 
-//cette fonction permet de supprimer les éléments select deja présent dans liste + filtre alphabétique + initer la création des li dans les select
+export function createTags(list,name,id){
+  list.forEach(element => {
+    var isSelected = checkValeur(name,element);
+    //createSelectCard(element,name,id,isSelected);
+    createTag(element,name,isSelected);
+ });
+}
+
+//cette fonction permet de supprimer les éléments du select deja présent dans liste + filtre alphabétique + initer la création des li dans les select
 function prepareSelect(list,name,id){
-  console.log(id);
+
     const optionsIngredient = document.getElementById(id);
-    
-    console.log(optionsIngredient);
+  
     while (optionsIngredient.firstChild) {
       optionsIngredient.removeChild(optionsIngredient.firstChild);
     }
+
+    console.log(document.getElementById("optionsIngredients"));
+
+    console.log("je suis là")
     
     //Créer une fonction pour supprimer enfant
-     //on tri par ordre alphabétique
+    //on tri par ordre alphabétique
      list.sort(function(a, b) {
         return a.localeCompare(b);
     });
+    
+    console.log(list);
+    console.log(document.getElementById("optionsIngredients"));
 
     list.forEach(element => {
-        var isSelected = checkValeur(name,element);
-        createSelectCard(element,name,id,isSelected);
-        createTag(element,name,isSelected);
-     });
-
+      var isSelected = checkValeur(name,element);
+      createSelectCard(element,name,id,isSelected);
+   });
 }
 
 //Cette fonction permet d'ajout le event listener sur chaque element d'une nouvelle liste
-function ajoutListenerSurListeIngredient(name){
+export function ajoutListenerSurListeIngredient(name){
     const listElement = document.getElementsByName(name);
-
     listElement.forEach(element => {
         element.addEventListener("click", function(){
-          console.log("ingredients");
+          console.log(document.getElementById("optionsIngredients"));
           if(element.classList.contains("selected") || element.id =="tagElement"){
             console.log("supprimer")
             supprimerLocalStorage(element.textContent,name);
           }
           else {
             ajoutLocalStorage(element.textContent,name);
-            
           }
+          console.log(document.getElementById("optionsIngredients"));
           filterRecipesByKeyword(recipes);
         });
     });
 }
-function ajoutListenerSurListeUstencils(name){
+export function ajoutListenerSurListeUstencils(name){
   const listElement = document.getElementsByName(name);
 
   listElement.forEach(element => {
@@ -136,7 +166,7 @@ function ajoutListenerSurListeUstencils(name){
       });
   });
 }
-function ajoutListenerSurListeAppareils(name){
+export function ajoutListenerSurListeAppareils(name){
   const listElement = document.getElementsByName(name);
 
   listElement.forEach(element => {

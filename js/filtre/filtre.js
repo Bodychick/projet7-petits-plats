@@ -1,15 +1,15 @@
 import { manageData } from '/../js/index.js';
-//import { recipes } from '../recettes/recipes.js';
+//import { recipes } from '/recettes/recipes.js';
 
 // écoute de l'input + savoir si l'utilisateur a rentré +/- 3 caractères
 export function filtreSelection(data){
   console.log("je repasse ici")
+  console.log(document.getElementById("optionsIngredients"));
     const inputRecherche = document.getElementById("input-recherche");
     inputRecherche.addEventListener("input", function(){
         console.log(inputRecherche.value.split("").length)
         console.log(inputRecherche.value.split(""));
        if (inputRecherche.value.split("").length>2){
-            //filterRecipesByKeyword(data, inputRecherche.value);
             filterRecipesByKeyword(data);
             inputRecherche.style.border = "1px solid green";
        } 
@@ -23,7 +23,7 @@ export function filtreSelection(data){
     });
 }
 
-
+//Récupérer la valeur du champ de recherche
 function getInputValue(){
   const inputRecherche = document.getElementById("input-recherche");
   if (inputRecherche.value.split("").length>2){
@@ -33,7 +33,8 @@ function getInputValue(){
   return [];
 }
 
-function getIngredientsListValue(){
+//Récupérer les ingrédients présent en localstorage
+export function getIngredientsListValue(){
   var tableauRecupere = localStorage.getItem("ingredients");
   if(tableauRecupere == null){
     return [];
@@ -44,7 +45,8 @@ function getIngredientsListValue(){
   }
 }
 
-function getAppareilsList(){
+//récupérer les appareils présents dans lelocalstorage
+export function getAppareilsList(){
   var tableauRecupere = localStorage.getItem("appareils");
   if(tableauRecupere == null){
     return [];
@@ -55,7 +57,8 @@ function getAppareilsList(){
   }
 }
 
-function getUstencilsListValue(){
+// récupérer les ustenciles dans le localstorage
+export function getUstencilsListValue(){
   var tableauRecupere = localStorage.getItem("ustencils");
   if(tableauRecupere == null){
     return [];
@@ -112,7 +115,7 @@ function getUstencilsListValue(){
   }
 
    //retourne un tableau avec une ligne par mot clé
-  function splitKeyword(inputKeyword){
+   function splitKeyword(inputKeyword){
     var inputTableau = inputKeyword.split(" ");
     const tableauLowerCase = inputTableau.map(element => {
       return element.toLowerCase();
