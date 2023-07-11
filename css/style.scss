@@ -136,6 +136,7 @@ main, body {
         flex-wrap: wrap;
         .wrapper{
             min-width: 250px;
+            position:relative;
         }
         .wrapper.active .content{
             display: block;
@@ -159,7 +160,7 @@ main, body {
         .content {
             position: absolute;
             z-index: 999;
-            top: 80px;
+            top: 60px;
             display: none;
             background-color: white;
             padding: 20px;
@@ -314,7 +315,7 @@ main, body {
     }
 }
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 800px) {
+@media only screen and (min-width : 320px) and (max-width : 800px) {
     .group-select{
         width: 100%;
         display: flex;
