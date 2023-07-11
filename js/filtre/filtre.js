@@ -134,13 +134,4 @@ function getUstencilsListValue(){
     }
   }
 
-  //retourne un tableau avec une ligne par mot clé
-  function splitKeyword(inputKeyword){
-    var inputTableau = inputKeyword.split(" ");
-    const tableauLowerCase = inputTableau.map(element => {
-      return element.toLowerCase();
-    });
-    console.log(tableauLowerCase);
-    return tableauLowerCase;
-  }
 
