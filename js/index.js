@@ -27,20 +27,34 @@ async function init() {
     const wrappers = document.querySelectorAll(".wrapper");
     console.log(wrappers)
     if(wrappers != null || wrappers != undefined){
-        wrappers.forEach((wrapper) => {
-            const selectBtn = wrapper.querySelector(".select-btn");
-            selectBtn.addEventListener("click", () => {
-              //wrapper.classList.toggle("active");
-              console.log(wrapper.classList.contains("active"))
-              if(wrapper.classList.contains("active")){
-                wrapper.classList.remove("active");
-              }
-              else {
-                wrapper.classList.add("active");
-              }
-            });
-        });
-    }
+      wrappers.forEach((wrapper) => {
+          const selectBtn = wrapper.querySelector(".select-btn");
+          selectBtn.addEventListener("click", function() {
+            console.log(wrapper.classList.contains("active"));
+            closeAllSelects(wrapper);
+            console.log(wrapper.classList.contains("active"));
+
+            if(wrapper.classList.contains("active")){
+              console.log("je passe ici")
+              wrapper.classList.remove("active");
+            }
+            else {
+              console.log("je passe là")
+              wrapper.classList.add("active");
+            }
+            
+          });
+      });
+  }
+}
+
+function closeAllSelects(wrapper) {
+const allSelects = document.querySelectorAll('.wrapper');
+
+allSelects.forEach(select => {
+  if(wrapper !== select)
+  select.classList.remove('active');
+});
 }
 
 export function manageData(data){
